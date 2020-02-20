@@ -1,0 +1,20 @@
+diff --git a/sysdeps/linux-gnu/arm/trace.c b/sysdeps/linux-gnu/arm/trace.c
+index f974d1f..8526bf1 100644
+--- a/sysdeps/linux-gnu/arm/trace.c
++++ b/sysdeps/linux-gnu/arm/trace.c
+@@ -77,6 +77,15 @@ syscall_p(struct process *proc, int status, int *sysnum)
+ 		unsigned insn = ptrace(PTRACE_PEEKTEXT, proc->pid,
+ 				       (void *)pc, 0);
+ 
++#if defined(__ARMEB__) && defined(__ARM_ARCH_7A__)
++               /* We running big endian arm on ARMv7: instructions are
++                * in little endian form so we need to byteswap it. Note
++                * on older ARM like V5 Xscale code is in big endian form
++                * byte swap is not needed in this case. I.e be8 vs be32.
++                */
++		insn = __builtin_bswap32(insn);
++#endif /*  __ARMEB__ && __ARM_ARCH_7A__ */
++
+ 		if (insn == 0xef000000 || insn == 0x0f000000
+ 		    || (insn & 0xffff0000) == 0xdf000000) {
+ 			/* EABI syscall */

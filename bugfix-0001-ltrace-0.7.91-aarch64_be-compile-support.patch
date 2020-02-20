@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 6853a0b..78faeed 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,6 +41,7 @@AC_SUBST(HOST_OS)
+ 
+ case "${host_cpu}" in
+     arm*|sa110)		HOST_CPU="arm" ;;
++    aarch64_be)		HOST_CPU="aarch64" ;;
+     cris*)		HOST_CPU="cris" ;;
+     mips*)		HOST_CPU="mips" ;;
+     powerpc|powerpc64)	HOST_CPU="ppc" ;;
