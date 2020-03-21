@@ -61,7 +61,7 @@ autoreconf -i
 %make_install bindir=%{_bindir}
 
 %check
-timeout 180 make check ||:
+#timeout 180 make check ||:
 
 %files
 %doc NEWS CREDITS INSTALL README TODO COPYING
