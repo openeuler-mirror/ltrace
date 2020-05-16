@@ -1,6 +1,6 @@
 name:           ltrace
 Version:        0.7.91
-Release:        29
+Release:        30
 Summary:        Trace the Library and System Calls a Program Makes
 
 License:        GPLv2+
@@ -28,6 +28,7 @@ Patch0016:      ltrace-0.7.91-aarch64-params.patch
 Patch9000:      bugfix-0001-ltrace-0.7.91-aarch64_be-compile-support.patch
 Patch9001:      bugfix-0001-ltrace-byteswap-instruction-in-arm-be8-mode.patch
 Patch9002:      bugfix-for-use-after-free-about-soname.patch
+Patch9003:      fix-null-directive-argument.patch
 
 BuildRequires:  elfutils-devel dejagnu libselinux-devel autoconf automake libtool
 
@@ -73,5 +74,8 @@ autoreconf -i
 %{_mandir}/man5/ltrace.conf.5*
 
 %changelog
+* Sat May 16 2020 Senlin Xia <xiasenlin1@huawei.com> - 0.7.91-30
+- fix the error: "%s" directive argument is NULL [-Werror=format-overflow=]
+
 * Wed Nov 27 2019 daiqianwen <daiqianwen@huawei.com> - 0.7.91-29
 - Package init.
