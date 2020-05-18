@@ -1,0 +1,19 @@
+diff -Nur ltrace-0.7.91_old/output.c ltrace-0.7.91/output.c
+--- ltrace-0.7.91_old/output.c	2020-05-16 15:14:38.069921077 +0800
++++ ltrace-0.7.91/output.c	2020-05-16 15:19:20.657858742 +0800
+@@ -598,12 +598,11 @@
+ 					   NULL, NULL, NULL);
+ 		symname = dwfl_module_addrinfo(mod, pc, &off, &sym,
+ 					       NULL, NULL, NULL);
++		/* This mimics the output produced by libunwind below.  */
++		fprintf(options.output, " > %s(%s+0x%" PRIx64 ") [%" PRIx64 "]\n",
++				modname, symname, off, pc);
+ 	}
+ 
+-	/* This mimics the output produced by libunwind below.  */
+-	fprintf(options.output, " > %s(%s+0x%" PRIx64 ") [%" PRIx64 "]\n",
+-		modname, symname, off, pc);
+-
+ 	/* See if we can extract the source line too and print it on
+ 	   the next line if we can find it.  */
+ 	if (mod != NULL) {
