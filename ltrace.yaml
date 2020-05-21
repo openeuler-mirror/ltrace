@@ -1,0 +1,4 @@
+version-ctrl: git 
+src_repo: https://gitlab.com/cespedes/ltrace.git/
+tag_prefix: NA
+seperator: "."
