@@ -1,6 +1,6 @@
 name:           ltrace
 Version:        0.7.91
-Release:        29
+Release:        30
 Summary:        Trace the Library and System Calls a Program Makes
 
 License:        GPLv2+
@@ -73,5 +73,8 @@ autoreconf -i
 %{_mandir}/man5/ltrace.conf.5*
 
 %changelog
+* Tue Aug 18 2020 senlin<xiasenlin1@huawei.com> - 0.7.91-30
+- add release for update
+
 * Wed Nov 27 2019 daiqianwen <daiqianwen@huawei.com> - 0.7.91-29
 - Package init.
