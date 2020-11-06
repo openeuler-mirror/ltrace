@@ -1,6 +1,6 @@
 name:           ltrace
 Version:        0.7.91
-Release:        30
+Release:        31
 Summary:        Trace the Library and System Calls a Program Makes
 
 License:        GPLv2+
@@ -30,6 +30,7 @@ Patch9001:      bugfix-0001-ltrace-byteswap-instruction-in-arm-be8-mode.patch
 Patch9002:      bugfix-for-use-after-free-about-soname.patch
 
 BuildRequires:  elfutils-devel dejagnu libselinux-devel autoconf automake libtool
+Requires:       %{name}-help = %{version}-%{release}
 
 %description
 Ltrace is a program that runs the specified command until it exits. It
@@ -73,6 +74,9 @@ autoreconf -i
 %{_mandir}/man5/ltrace.conf.5*
 
 %changelog
+* Fri Nov 06 2020 Ge Wang <wangge20@huawei.com> - 0.7.91-31
+- Set help packge as ltrace package's install require
+
 * Tue Aug 18 2020 senlin<xiasenlin1@huawei.com> - 0.7.91-30
 - add release for update
 
