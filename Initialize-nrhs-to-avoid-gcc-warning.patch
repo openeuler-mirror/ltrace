@@ -1,0 +1,29 @@
+From dac8e133866684c2e090f9922871dc3e3b501a30 Mon Sep 17 00:00:00 2001
+From: lingsheng <lingsheng@huawei.com>
+Date: Mon, 11 Jan 2021 14:27:49 +0800
+Subject: [PATCH] Initialize 'nrhs' to avoid gcc warning
+
+---
+ expr.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/expr.c b/expr.c
+index 4059a32..01851c8 100644
+--- a/expr.c
++++ b/expr.c
+@@ -189,10 +189,10 @@ int
+ expr_clone(struct expr_node *retp, const struct expr_node *node)
+ {
+ 	*retp = *node;
++	struct expr_node *nlhs;
++	struct expr_node *nrhs = NULL;
+ 
+ 	switch (node->kind) {
+-		struct expr_node *nlhs;
+-		struct expr_node *nrhs;
+ 
+ 	case EXPR_OP_ARGNO:
+ 	case EXPR_OP_SELF:
+-- 
+2.23.0
+
