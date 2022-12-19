@@ -1,6 +1,6 @@
 name:           ltrace
 Version:        0.7.91
-Release:        31
+Release:        32
 Summary:        Trace the Library and System Calls a Program Makes
 
 License:        GPLv2+
@@ -30,6 +30,9 @@ Patch9001:      bugfix-0001-ltrace-byteswap-instruction-in-arm-be8-mode.patch
 Patch9002:      bugfix-for-use-after-free-about-soname.patch
 Patch9003:      fix-null-directive-argument.patch
 Patch9004:      Initialize-nrhs-to-avoid-gcc-warning.patch
+
+# patch for loongarch
+Patch8000:      ltrace-0.7.91-add-support-for-loongarch.patch
 
 BuildRequires:  elfutils-devel dejagnu libselinux-devel autoconf automake libtool
 
@@ -75,6 +78,9 @@ autoreconf -i
 %{_mandir}/man5/ltrace.conf.5*
 
 %changelog
+* Thu Dec 15 2022 Hui Li <lihui@loongson.cn> - 0.7.91-32
+- Add suppot for loongarch
+
 * Mon Jan 11 2021 lingsheng <lingsheng@huawei.com> - 0.7.91-31
 - Initialize 'nrhs' to avoid gcc warning
 
