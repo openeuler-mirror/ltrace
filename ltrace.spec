@@ -1,6 +1,6 @@
 name:           ltrace
 Version:        0.7.91
-Release:        32
+Release:        33
 Summary:        Trace the Library and System Calls a Program Makes
 
 License:        GPLv2+
@@ -59,6 +59,11 @@ Help document for the ltrace package.
 
 %build
 autoreconf -i
+
+%if "%toolchain" == "clang"
+    CFLAGS="$CFLAGS -Wno-error=enum-conversion -Wno-error=string-plus-int"
+%endif
+
 %configure --docdir=%{?_pkgdocdir}%{!?_pkgdocdir:%{_docdir}/%{name}-%{version}}
 %make_build
 
@@ -78,6 +83,9 @@ autoreconf -i
 %{_mandir}/man5/ltrace.conf.5*
 
 %changelog
+* Thu Apr 20 2023 jammyjellyfish <jammyjellyfish255@outlook.com> - 0.7.91-33
+- Fix clang build error
+
 * Thu Dec 15 2022 Hui Li <lihui@loongson.cn> - 0.7.91-32
 - Add suppot for loongarch
 
